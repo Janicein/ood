@@ -1,12 +1,12 @@
 public class ParkingSpot {
-    int floorNum;
+    ParkingFloor parkingFloor;
     String id;
     Boolean occupied = false;
     SpotSize size;
     Vehicle v;
 
-    public ParkingSpot(int floorNum, String id, SpotSize size){
-        this.floorNum = floorNum;
+    public ParkingSpot(ParkingFloor parkingFloor, String id, SpotSize size){
+        this.parkingFloor = parkingFloor;
         this.id = id;
         this.size = size;
     }
@@ -26,6 +26,14 @@ public class ParkingSpot {
 
     public void releaseSpot(){
         this.v = null;
+        if(size == SpotSize.SMALL){
+            parkingFloor.numSmall++;
+        }else if(size == SpotSize.COMPACT){
+            parkingFloor.numCompact++;
+        }else{
+            parkingFloor.numLarge++;
+        }
+        parkingFloor.occupied--;
         occupied = false;
         
     }

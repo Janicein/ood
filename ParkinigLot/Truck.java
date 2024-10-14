@@ -1,6 +1,6 @@
 public class Truck extends Vehicle{
-    public Truck(String license){
-        super(VehicleType.TRUCK, license);
+    public Truck(String license, ParkingSpot ps){
+        super(VehicleType.TRUCK, license, ps);
     }
 
 }
